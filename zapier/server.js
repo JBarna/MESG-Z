@@ -1,8 +1,8 @@
-const MESG = require('mesg-js').service()
-const axios = require('axios')
+// const MESG = require('mesg-js').service()
 const bodyParser = require('body-parser')
 const app = require('express')()
 const cors = require('cors')
+const hookHand = require('./captainHook')
 
 const fs = require('fs')
 
@@ -10,6 +10,15 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+// used to verify the connection can be made from zapier
+app.get('/verify', (req, res) => {
+
+  // just return positive
+  res.status(200)
+  res.end(JSON.stringify({}))
+})
+
+// used to subscribe a hook from zapier 
 app.post('/api/hooks', async (req, res) => {
 
   // handle incoming hook
@@ -18,19 +27,22 @@ app.post('/api/hooks', async (req, res) => {
   // save the zap id and url
   console.log('this is the subscribe', body)
 
-  fs.writeFileSync('./zapier/data.json', JSON.stringify(body))
+  const id = hookHand.saveHook(body)
 
-  res.send(JSON.stringify(body))
-  res.end()
+  res.status(200)
+  res.end(JSON.stringify({ id }))
 })
 
-app.delete('/api/hooks/{hookId}', async (req, res) => {
+// used to unsubscribe a webhook from zapier
+app.delete('/api/hooks/:hookId', async (req, res) => {
 
   // handle incoming hook
   const hookId = req.params.hookId
 
   // save the zap id and url
   console.log('this is the unsubscribe', hookId)
+
+  res.status(200)
   res.end()
 })
 
@@ -40,4 +52,5 @@ app.delete('/api/hooks/{hookId}', async (req, res) => {
 // })
 // res.send(response)
 
-app.listen(43805, () => console.log('Example app listening on port 3000!'))
+// listen for incoming requests
+app.listen(43805, () => console.log('Example app listening on port 43805!'))
