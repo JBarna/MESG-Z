@@ -1,0 +1,9 @@
+{
+  "name": "your-package-name",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "mesg-js": "^2.0.0",
+    "uuid": "^3.3.2"
+  }
+}
