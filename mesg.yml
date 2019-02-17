@@ -1,18 +1,41 @@
-name: myservice
-sid: myservice
-description: "Description of my service"
+name: Zapier
+sid: zapier
+description: "Connects MESG to Zapier and back again"
 tasks:
-  taskX:
+  execute:
     inputs:
-      foo:
+      triggerType:
+        description: "The type of zapier trigger that will fire. Defined in your Zapier Trigger": 
         type: String
-      bar:
-        type: String
+      data:
+        description: "The data to send to the Zapier trigger to be used in the following Zapier steps"
+        type: Object
     outputs:
       success:
+        name: "Success"
+        description: "Output when Zapier returns with Data"
         data:
-          message:
+          outputs:
+            type: Any
+      error:
+        data:
+          error:
             type: String
+  loadSample:
+    inputs:
+      triggerType:
+        description: "The type of zapier trigger that this sample corresponds to": 
+        type: String
+      sampleData:
+        description: "The sample of data that will be sent to Zapier to start your zap"
+        type: Object
+    outputs:
+      success:
+        name: "Success"
+        description: "Output when Zapier returns with Data"
+        data:
+          outputs:
+            type: Any
       error:
         data:
           error:
@@ -22,3 +45,6 @@ events:
     data:
       x:
         type: Boolean
+configuration:
+  ports:
+    - "43805"
