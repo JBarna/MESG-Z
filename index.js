@@ -4,8 +4,8 @@ const mesg = require('mesg-js').service()
 const server = require('./zapier/server')
 
 mesg.listenTask({
-  execute: require('./tasks/execute'),
-  loadSample: require('./tasks/loadSample')
+  execute: require('./tasks/execute').startTask,
+  loadSample: require('./tasks/loadSample').startTask
 })
   .on('error', (error) => console.error(error))
 

@@ -5,7 +5,7 @@ tasks:
   execute:
     inputs:
       triggerType:
-        description: "The type of zapier trigger that will fire. Defined in your Zapier Trigger": 
+        description: "The type of zapier trigger that will fire. Defined in your Zapier Trigger" 
         type: String
       data:
         description: "The data to send to the Zapier trigger to be used in the following Zapier steps"
@@ -24,7 +24,7 @@ tasks:
   loadSample:
     inputs:
       triggerType:
-        description: "The type of zapier trigger that this sample corresponds to": 
+        description: "The type of zapier trigger that this sample corresponds to"
         type: String
       sampleData:
         description: "The sample of data that will be sent to Zapier to start your zap"
