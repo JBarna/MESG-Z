@@ -27,7 +27,7 @@ exports.receiveData = data => {
   delete onGoingHooks[data.id]
   delete data.id
 
-  mesgCBs.success(data)
+  mesgCBs.success({ outputs: data })
 }
 
 const onGoingHooks = {}

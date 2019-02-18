@@ -20,7 +20,7 @@ tasks:
       error:
         data:
           error:
-            type: String
+            type: Any
   loadSample:
     inputs:
       triggerType:
@@ -39,7 +39,7 @@ tasks:
       error:
         data:
           error:
-            type: String
+            type: Any
 events:
   started:
     data:
