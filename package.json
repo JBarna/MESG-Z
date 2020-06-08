@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
+    "@liteflow/service": "^1.0.7",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
-    "mesg-js": "^2.0.0",
     "uuid": "^3.3.2"
   }
 }

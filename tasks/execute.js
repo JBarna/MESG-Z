@@ -17,17 +17,17 @@ exports.receiveData = data => {
     return
   }
 
-  const mesgCBs = onGoingHooks[data.id]
+  const liteflowCBs = onGoingHooks[data.id]
 
-  if (!mesgCBs) {
-    console.log('no mesgCB for id', data.id, onGoingHooks)
+  if (!liteflowCBs) {
+    console.log('no liteflowCB for id', data.id, onGoingHooks)
     return
   }
 
   delete onGoingHooks[data.id]
   delete data.id
 
-  mesgCBs.success({ outputs: data })
+  liteflowCBs.success({ outputs: data })
 }
 
 const onGoingHooks = {}
